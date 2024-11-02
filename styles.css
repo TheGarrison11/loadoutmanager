@@ -367,24 +367,23 @@ footer p {
 }
 
 .management-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
-    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
+    margin-left: 180px;
 }
 
 .management-button {
     background-color: #333;
-    color: #fff;
-    padding: 20px;
+    color: white;
+    padding: 30px;
     border-radius: 8px;
-    text-align: center;
-    font-size: 1.2rem;
-    width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 200px;
     cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     text-decoration: none;
 }
 
@@ -395,10 +394,9 @@ footer p {
 
 .management-button h3 {
     font-size: 1.5rem;
-    margin: 10px 0;
+    margin-bottom: 10px;
 }
 
-/* Modal overlay */
 .modal {
     display: none;
     position: fixed;
@@ -411,7 +409,6 @@ footer p {
     backdrop-filter: blur(5px);
 }
 
-/* Modal content box */
 .modal-content {
     background-color: #242424;
     color: #f5f5f5;
