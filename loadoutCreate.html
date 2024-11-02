@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadout Manager</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <div class="management-container">
+        <h1 class="welcome-message">Create your company trucks!</h1>
+        <div class="management-boxes">
+            <a href="#" class="management-button" onclick="openModal('createLoadoutModal')">
+                <h1>Create Loadouts</h1>
+            </a>
+            <a href="#" class="management-button" onclick="openModal('editLoadoutModal')">
+                <h1>Edit / View Loadouts</h1>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="createLoadoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createLoadoutModal')">&times;</span>
+            <h3>Create Loadout</h3>
+            <form>
+                <label for="loadoutName">Loadout Name:</label>
+                <input type="text" id="loadoutName" name="loadoutName">
+                <button type="submit" class="modal-button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="editLoadoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editLoadoutModal')">&times;</span>
+            <h2>Edit/View Loadouts</h2>
+            <p>Loadout editing options will be here.</p>
+        </div>
+    </div>
+    <script src="scriptbox.js"></script>
+</body>
+</html>
