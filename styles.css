@@ -366,7 +366,7 @@ footer p {
     font-family: 'Oswald', sans-serif;
 }
 
-.management-buttons {
+.management-boxes {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
