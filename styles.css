@@ -222,22 +222,6 @@ input[type="password"]:focus {
         "box3 box4";
 }
 
-.info-box:nth-child(1) {
-    grid-area: box1;
-}
-
-.info-box:nth-child(2) {
-    grid-area: box2;
-}
-
-.info-box:nth-child(3) {
-    grid-area: box3;
-}
-
-.info-box:nth-child(4) {
-    grid-area: box4;
-}
-
 .info-box {
     background-color: #242424;
     padding: 20px;
@@ -271,17 +255,18 @@ input[type="password"]:focus {
 }
 
 .welcome-message {
-    font-size: 36px;
+    font-size: 44px;
     margin-bottom: 40px;
     color: #ff6700;
+    margin-left: 50px;
 }
 
 .dashboard-boxes {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
+    margin-left: 270px;
     justify-content: center;
-    margin-left: 180px;
     margin-top: 25px;
 }
 
@@ -352,140 +337,154 @@ footer p {
     }
 }
 
-/* General button styles to match theme */
-.management-container {
-    max-width: 900px;
-    margin: 100px auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.welcome-message {
-    font-size: 4.2rem;
-    margin-bottom: 20px;
-    color: #ff6700;
-    font-family: 'Oswald', sans-serif;
-}
-
-.management-boxes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 55px;
-    justify-content: center;
-    margin-left: 125px;
-    margin-top: 75px;
-    padding: 0 25px;
-}
-
 .management-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
     background-color: #333;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    width: 200px;
-    cursor: pointer;
+    color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, background-color 0.3s ease;
     text-decoration: none;
+    border: 2px solid transparent;
 }
 
 .management-button:hover {
     background-color: #ff6700;
+    color: #1b1b1b;
     transform: scale(1.05);
+    border-color: #ff6700;
 }
 
 .management-button h3 {
     font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.management-button img {
+    width: 50px;
+    height: auto;
     margin-bottom: 10px;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background-color: #242424;
-    color: #f5f5f5;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+.management-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
     text-align: center;
-    position: relative;
 }
 
-/* Close button styling */
-.close {
+.welcome-messager {
+    font-size: 2.5rem;
     color: #ff6700;
-    font-size: 24px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close:hover {
-    color: #e65c00;
-}
-
-/* Modal form styling */
-.modal-content h2 {
-    color: #ff6700;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.8rem;
     margin-bottom: 20px;
 }
 
-.modal-content label {
-    color: #f5f5f5;
-    font-size: 1rem;
-    display: block;
-    margin-bottom: 10px;
+.management-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-.modal-content input[type="text"] {
+@media screen and (max-width: 600px) {
+    .management-container {
+        padding: 10px;
+    }
+    .management-button h3 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #242424;
+    margin: 10% auto; /* Adjusted for closer to the top */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Increased width to 80% */
+    max-width: 600px; /* Increased maximum width for larger screens */
+    max-height: 80%; /* Set maximum height */
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Close Button */
+.close {
+    color: #ff6700; /* Close button color */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.close:hover,
+.close:focus {
+    color: #e65c00; /* Darker shade on hover */
+}
+
+/* Form Styles */
+.modal-form {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of input fields */
+}
+
+/* Form Group Styles */
+.form-group {
+    flex: 1 1 45%; /* Allow each group to take up to 45% of the width */
+    margin: 5px; /* Margin for spacing between fields */
+}
+
+/* Label Styles */
+label {
+    color: #f5f5f5;
+}
+
+/* Input Styles */
+input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 8px; /* Reduced padding for smaller input fields */
     border: 1px solid #555;
     border-radius: 4px;
-    background-color: #333;
+    background-color: #444;
     color: #f5f5f5;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease;
 }
 
-.modal-content input[type="text"]:focus {
+input[type="text"]:focus {
     border-color: #ff6700;
     outline: none;
 }
 
-/* Submit button */
+/* Submit Button */
 .modal-button {
-    background-color: #ff6700;
+    padding: 10px 15px; /* Adjusted padding for smaller button */
     border: none;
-    padding: 10px 20px;
     border-radius: 4px;
-    color: white;
-    font-size: 1rem;
+    background-color: #ff6700;
+    color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Add margin for separation */
 }
 
 .modal-button:hover {
     background-color: #e65c00;
-    transform: scale(1.05);
 }
