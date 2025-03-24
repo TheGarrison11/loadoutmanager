@@ -4,49 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Handbook</title>
-    <link rel="stylesheet" href="styles.css"/> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .sidebar {
+            width: 200px;
+        }
+        .pdf-viewer {
+            flex-grow: 1;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" id="navbar__logo">Loadout Manager</a>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a href="index.html" class="navbar__links">Home</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="handbook.html" class="navbar__links">Handbook</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="dashboard-container">
-        <h1 class="welcome-messager">Employee Handbook</h1>
-
-        <div class="handbook-upload">
-            <h3>Upload New Handbook</h3>
-            <input type="file" id="handbookFile" accept=".pdf,.doc,.docx">
-            <button class="modal-button" onclick="uploadHandbook()">Upload</button>
-        </div>
-
-        <div class="handbook-list">
+    <h2>Employee Handbook</h2>
+    <input type="file" id="upload" accept="application/pdf">
+    <button onclick="uploadFile()">Upload</button>
+    
+    <div class="container">
+        <div class="sidebar">
             <h3>Available Handbooks</h3>
-            <ul id="handbookList">
-                <li><a href="example-handbook.pdf" download>Example Handbook (PDF)</a></li>
-            </ul>
+            <ul id="handbook-list"></ul>
         </div>
+        <iframe id="pdf-viewer" class="pdf-viewer"></iframe>
     </div>
 
     <script>
-        function uploadHandbook() {
-            const fileInput = document.getElementById("handbookFile");
-            if (fileInput.files.length > 0) {
-                alert("File uploaded successfully! (This requires backend integration)");
-            } else {
-                alert("Please select a file to upload.");
-            }
+        async function fetchHandbooks() {
+            const response = await fetch('/handbooks');
+            const handbooks = await response.json();
+            const list = document.getElementById('handbook-list');
+            list.innerHTML = '';
+            
+            handbooks.forEach(file => {
+                const li = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#';
+                link.innerText = file;
+                link.onclick = () => {
+                    document.getElementById('pdf-viewer').src = `/uploads/${file}`;
+                };
+                li.appendChild(link);
+                list.appendChild(li);
+            });
         }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('upload');
+            if (fileInput.files.length === 0) return alert('Please select a file');
+            
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            
+            await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            fetchHandbooks();
+        }
+        
+        fetchHandbooks();
     </script>
 </body>
 </html>
