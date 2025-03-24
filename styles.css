@@ -495,3 +495,32 @@ input[type="text"]:focus {
 .modal-button:hover {
     background-color: #e65c00;
 }
+
+/* Style for the link in the sidebar */
+.handbook-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background */
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for the link */
+.handbook-link:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Active effect (when clicked) */
+.handbook-link:active {
+    transform: scale(0.98); /* Slightly shrink the button */
+}
+
+/* Focused link style for accessibility */
+.handbook-link:focus {
+    outline: 3px solid #ffbf00; /* Yellow border when focused */
+}
